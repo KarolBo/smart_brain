@@ -9,6 +9,8 @@ import Register from './components/Register/Register.js';
 import Particles from 'react-particles-js';
 import './App.css';
 
+const app_address = 'https://warm-stream-74329.herokuapp.com'
+
 const particlesOptions = {
   particles: {
     number: {
@@ -20,7 +22,6 @@ const particlesOptions = {
     }
   }
 };
-
 
 const initialState = {
 	input: '',
@@ -76,7 +77,7 @@ class App extends Component {
 
   onSubmit = () => {
     this.setState({imageUrl: this.state.input});
-    fetch('http://localhost:3000/imageurl', {
+    fetch(app_address + '/imageurl', {
           method: 'post',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({ input: this.state.input })
@@ -84,7 +85,7 @@ class App extends Component {
     .then(response => response.json())
     .then( (response) => {
       if (response) {
-        fetch('http://localhost:3000/image', {
+        fetch(app_address + '/image', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({ id: this.state.user.id })

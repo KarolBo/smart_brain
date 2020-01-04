@@ -1,5 +1,7 @@
 import React from 'react';
 
+const app_address = 'https://warm-stream-74329.herokuapp.com'
+
 class Register extends React.Component {
 	constructor(props) {
 		super();
@@ -23,7 +25,7 @@ class Register extends React.Component {
 	}
 
 	onSubmitSighIn = () => {
-		fetch('http://localhost:3000/register', {
+		fetch(app_address + '/register', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify( {
